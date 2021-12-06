@@ -115,15 +115,13 @@ const CineProvider = (props) => {
 
   const comprar = (_cantidad) => {
     if (_cantidad >= 1 && _cantidad < 11) {
-      //alert("Gracias por su compra :)")
       if (Platform.OS === 'android') {
-        ToastAndroid.show('compra exitosa', ToastAndroid.SHORT);
+        ToastAndroid.show('compra exitosa, Disfruta la pelicula', ToastAndroid.SHORT);
       } else {
         AlertIOS.alert('compra exitosa');
       }
       setCompra({});
     } else {
-      //alert("Checa tu numero de boletos :/")
        if (Platform.OS === 'android') {
         ToastAndroid.show('compra no exitosa', ToastAndroid.SHORT);
       } else {

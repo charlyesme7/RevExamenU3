@@ -10,7 +10,7 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Header
-       centerComponent={{ text: 'cinepolis', style: { color: '#fff'}}}       
+       centerComponent={{ text: 'AMC', style: { color: '#ffffff'},backgroundColor:{color:'#ea232b'}}}       
       />
       <ScrollView>
         {cartelera.map((p) => (
@@ -33,7 +33,7 @@ const HomeScreen = ({ navigation }) => {
                 />
                 <Button
                   title={p.horarios[1]}
-                  color="#808080"
+                  color="#9e9e9e"
                   onPress={() => {
                     navigation.navigate('DetailsScreen');
                     agregar(p, p.horarios[1]);
@@ -41,7 +41,7 @@ const HomeScreen = ({ navigation }) => {
                 />
                 <Button
                   title={p.horarios[2]}
-                  color="#454545"
+                  color="#9e9e9e"
                   onPress={() => {
                     navigation.navigate('DetailsScreen');
                     agregar(p, p.horarios[2]);
@@ -59,15 +59,18 @@ const HomeScreen = ({ navigation }) => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  centerComponent:{
+    backgroundColor: '#ea232b',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ea232b',
     alignItems: 'center',
     justifyContent: 'center',
   },
   container2: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ea232b',
     alignItems: 'center',
     justifyContent: 'space-around',
   },

@@ -10,7 +10,7 @@ const DetailsScreen = ({ route, navigation }) => {
   return (
     <View >
     <Header
-       centerComponent={{ text: 'cinepolis', style: { color: '#fff'}}}
+       centerComponent={{ text: 'AMC', style: { color: '#ffffff'}}}
         
       />
       <Card style={styles.container}>
@@ -19,15 +19,15 @@ const DetailsScreen = ({ route, navigation }) => {
           <Text>Horario: {compra.horario}</Text>
           <Text>{compra.idioma}</Text>
           <TextInput
-            placeholder="Numero de boletos"
+            placeholder="Ingrese numero de tickets"
             keyboardType="numeric"
             onChangeText={(e)=>calcular(e,compra)}
           />
-           <Text>Total =$ {compra.total*compra.cantidad}.00</Text>
+           <Text>Total= $ {compra.total*compra.cantidad}.00</Text>
         </View>
         <View>
-          <Button title="Cancelar" color="#943838" onPress={()=>{navigation.goBack(); eliminarcompra}} />
-          <Button title="Comprar"  color="#389440" onPress={()=>{navigation.goBack(); comprar(compra.cantidad)}}/>
+          <Button title="Cancelar" color="#ea232b" onPress={()=>{navigation.goBack(); eliminarcompra}} />
+          <Button title="Comprar"  color="#3fdd4e" onPress={()=>{navigation.goBack(); comprar(compra.cantidad)}}/>
       </View>
       </Card>
     </View>
@@ -39,7 +39,7 @@ export default DetailsScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ea232b',
     justifyContent: 'center',
   },
 });

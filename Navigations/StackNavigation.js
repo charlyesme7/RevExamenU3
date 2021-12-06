@@ -6,14 +6,19 @@ import DetailsScreen from '../Screens/DetailsScreen';
 
 const Stack = createStackNavigator();
 
-export default function StackNavigation1(){
+export default function StackNavigation(){
     return(
         <Stack.Navigator>
-            <Stack.Screen name="HomeScreen" component={HomeScreen}
-                options={{headerShown:false, headerTitle:'Inicio'}}
+            <Stack.Screen 
+            name="HomeScreen" 
+            
+            component={HomeScreen}
+                options={{headerShown:false, headerTitle:'Inicio',}}
             />
 
-            <Stack.Screen name="DetailsScreen" component={DetailsScreen}
+            <Stack.Screen 
+            name="DetailsScreen" 
+            component={DetailsScreen}
                 options={{headerShown:false}}
             />
 
