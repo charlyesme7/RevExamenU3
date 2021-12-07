@@ -1,14 +1,10 @@
 import React, { createContext, useState } from 'react';
-
-import {
-  Alert,
-} from 'react-native';
-
+import {Alert} from 'react-native';
 export const CineContext = createContext();
 
 const CineProvider = (props) => {
   const [compra, setCompra] = useState({});
-  const [cartelera, setCartelera] = useState([
+  const [cartelera] = useState([
     {
       codigo:1,
       nombre:"Avengers", 
@@ -43,77 +39,57 @@ const CineProvider = (props) => {
       url:'https://m.media-amazon.com/images/I/81ai6zx6eXL._AC_SL1304_.jpg'},
   ]);
 
-  const agregar = (_selection, _showtime) => {
-    const objpeliselect = {
+  const agregar = (pelicula, hora) => {
+    const temp = {
+      nombre: pelicula.nombre,
+      idioma: pelicula.idioma,
+      clasificacion: pelicula.clasificacion,
       cantidad: 0,
-      clasificacion: _selection.clasificacion,
-      duracion: _selection.duracion,
-      horario: _showtime,
-      idioma: _selection.idioma,
-      nombre: _selection.nombre,
       total: 0,
+      duracion: pelicula.duracion,
+      horario: hora
     };
-
-    setCompra(objpeliselect);
+    setCompra(temp);
   };
 
 
-  const calcular = (_e, _pelicalcular) => {
-    let objpeliselect = {};
+  const calcular = (pelicula, a) => {
+    let precio;
 
-    if (_e >= 1) {
-      if (_pelicalcular.clasificacion === 'A') {
-        objpeliselect = {
-          cantidad: _e,
-          clasificacion: _pelicalcular.clasificacion,
-          duracion: _pelicalcular.duracion,
-          horario: _pelicalcular.horario,
-          idioma: _pelicalcular.idioma,
-          nombre: _pelicalcular.nombre,
-          total: 50,
-        };
-      } else {
-        if (_pelicalcular.clasificacion === 'B') {
-          objpeliselect = {
-            cantidad: _e,
-            clasificacion: _pelicalcular.clasificacion,
-            duracion: _pelicalcular.duracion,
-            horario: _pelicalcular.horario,
-            idioma: _pelicalcular.idioma,
-            nombre: _pelicalcular.nombre,
-            total: 80,
-          };
-        } else {
-          objpeliselect = {
-            cantidad: _e,
-            clasificacion: _pelicalcular.clasificacion,
-            duracion: _pelicalcular.duracion,
-            horario: _pelicalcular.horario,
-            idioma: _pelicalcular.idioma,
-            nombre: _pelicalcular.nombre,
-            total: 95,
-          };
-        }
+    if (a > 0) {
+      if (pelicula.clasificacion === 'A') {
+        precio = 50; 
       }
-
-      setCompra(objpeliselect);
+      if (pelicula.clasificacion === 'B') {
+        precio = 80;
+      }
+      if (pelicula.clasificacion === 'C') {
+        precio = 95;
+      }
+      const temp = {
+        nombre: pelicula.nombre,
+        idioma: pelicula.idioma,
+        clasificacion: pelicula.clasificacion,
+        cantidad:a,
+        total:precio,
+        duracion: pelicula.duracion,
+        horario: pelicula.horario,
+      };
+      setCompra(temp);
     }
   };
 
-  const eliminarcompra = (_cantidad) => {
-    if (_cantidad >= 0) {
+  const eliminarcompra = () => {
       Alert.alert("Tu compra ha sido cancelada.");
-    }
-    
   };
 
 
-  const comprar = (_cantidad) => {
-    if (_cantidad >= 1) {
+  const comprar = (pelicula) => {
+    if (pelicula.cantidad > 0) {
       setCompra({});
       Alert.alert('compra exitosa');
     } 
-     else if (_cantidad == 0){
+     else if (pelicula.cantidad === 0){
         Alert.alert('Ingrese cantidad de boletos.');
       }
     
@@ -124,6 +100,7 @@ const CineProvider = (props) => {
       value={{
         cartelera,
         compra,
+        setCompra,
         agregar,
         eliminarcompra,
         calcular,

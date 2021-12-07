@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View, Button, TextInput} from 'react-native';
-import { Header,Card } from 'react-native-elements';
+import { Header} from 'react-native-elements';
 
 import { CineContext } from '../Context/CineContext';
 
-const DetailsScreen = ({ route, navigation }) => {
-  const { compra, eliminarcompra, calcular, comprar } = useContext(CineContext);
+const DetailsScreen = ({navigation }) => {
+  const { compra, eliminarcompra, calcular, comprar} = useContext(CineContext);
 
   return (
     <View style={styles.content1}>
@@ -22,15 +22,15 @@ const DetailsScreen = ({ route, navigation }) => {
             <TextInput
               placeholder="Ingrese numero de tickets"
               keyboardType="numeric"
-              onChangeText={(e)=>calcular(e,compra)}
+              onChangeText={(cantidad)=>{calcular(compra, cantidad)}}
             />
             <Text>Total= $ {compra.total*compra.cantidad}.00</Text>
         </View >
           <View style={styles.boton1}>
-            <Button title="Cancelar" color="#ea232b" onPress={()=>{navigation.goBack(); eliminarcompra(compra.cantidad)}} />
+            <Button title="Cancelar" color="#ea232b" onPress={()=>{navigation.goBack(); eliminarcompra()}} />
           </View>
           <View style={styles.boton2}>
-          <Button title="Comprar"  color="#3fdd4e" onPress={()=>{navigation.goBack(); comprar(compra.cantidad)}}/>
+          <Button title="Comprar"  color="#3fdd4e" onPress={()=>{navigation.goBack(); comprar(compra)}}/>
           </View>
       </View>
     </View>
