@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
-import { Header, Card } from 'react-native-elements';
+import { StyleSheet, Text, View, Button} from 'react-native';
+import { Header, Card} from 'react-native-elements';
 import { ScrollView } from 'react-native-gesture-handler';
 
 import { CineContext } from '../Context/CineContext';
@@ -10,14 +10,14 @@ const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Header
-       centerComponent={{ text: 'AMC', style: { color: '#ffffff'},backgroundColor:{color:'#ea232b'}}}       
+       centerComponent={{ text: 'AMC',backgroundColor:{color:'#ea232b'}}}       
       />
       <ScrollView>
         {cartelera.map((p) => (
           <Card>
             <Card.Title>{p.nombre}</Card.Title>
             <View>
-              <View>
+              <View style={styles.logo1}>
                 <Card.Image style={styles.logo} source={{ uri: p.url }} />
               </View>
               <View style={styles.container2}>
@@ -59,23 +59,22 @@ const HomeScreen = ({ navigation }) => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  centerComponent:{
-    backgroundColor: '#ea232b',
-  },
   container: {
-    flex: 1,
-    backgroundColor: '#ea232b',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex:1,
+    backgroundColor: '#ffffff',
   },
   container2: {
-    flex: 1,
-    backgroundColor: '#ea232b',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'space-around',
   },
   logo: {
-    height: 225,
-    width: 150,
+    height: 200,
+    width: 120,
+  },
+  logo1:{
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

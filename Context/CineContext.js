@@ -1,14 +1,7 @@
 import React, { createContext, useState } from 'react';
 
 import {
-  Text,
-  View,
-  StyleSheet,
-  Button,
-  StatusBar,
-  ToastAndroid,
-  Platform,
-  AlertIOS,
+  Alert,
 } from 'react-native';
 
 export const CineContext = createContext();
@@ -64,9 +57,6 @@ const CineProvider = (props) => {
     setCompra(objpeliselect);
   };
 
-  const eliminarcompra = () => {
-    setCompra({});
-  };
 
   const calcular = (_e, _pelicalcular) => {
     let objpeliselect = {};
@@ -110,21 +100,23 @@ const CineProvider = (props) => {
     }
   };
 
-  const comprar = (_cantidad) => {
-    if (_cantidad >= 1 && _cantidad) {
-      if (Platform.OS === 'android') {
-        ToastAndroid.show('compra exitosa, Disfruta la pelicula', ToastAndroid.SHORT);
-      } else {
-        AlertIOS.alert('compra exitosa');
-      }
-      setCompra({});
-    } else {
-       if (Platform.OS === 'android') {
-        ToastAndroid.show('compra no exitosa', ToastAndroid.SHORT);
-      } else {
-        AlertIOS.alert('compra no exitosa');
-      }
+  const eliminarcompra = (_cantidad) => {
+    if (_cantidad >= 0) {
+      Alert.alert("Tu compra ha sido cancelada.");
     }
+    
+  };
+
+
+  const comprar = (_cantidad) => {
+    if (_cantidad >= 1) {
+      setCompra({});
+      Alert.alert('compra exitosa');
+    } 
+     else if (_cantidad == 0){
+        Alert.alert('Ingrese cantidad de boletos.');
+      }
+    
   };
 
   return (
