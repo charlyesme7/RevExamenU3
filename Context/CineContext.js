@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react';
+
 import {
   Text,
   View,
@@ -16,41 +17,37 @@ const CineProvider = (props) => {
   const [compra, setCompra] = useState({});
   const [cartelera, setCartelera] = useState([
     {
-      codigo: 1,
-      nombre: 'Halloween Kills',
-      idioma: 'SUB',
-      clasificacion: 'C',
-      horarios: ['13:00', '17:50', '20:30'],
-      duracion: '106 min',
-      url: 'https://static.cinepolis.com/img/peliculas/37049/1/1/37049.jpg',
-    },
+      codigo:1,
+      nombre:"Avengers", 
+      idioma:'DOB', 
+      clasificacion:'B',
+      horarios:['13:00','17:50','20:30'],
+      duracion:'120 min',
+      url:'https://m.media-amazon.com/images/I/71xZtfOsHdL._AC_SY679_.jpg'},
     {
-      codigo: 2,
-      nombre: 'Los Locos Addams 2',
-      idioma: 'ESP',
-      clasificacion: 'A',
-      horarios: ['9:00', '11:30', '13:30'],
-      duracion: '93 min',
-      url: 'https://static.cinepolis.com/img/peliculas/37048/1/1/37048.jpg',
-    },
+      codigo:2,
+      nombre:"Avengers: Age of Utron", 
+      idioma:'DOB', 
+      clasificacion:'A',
+      horarios:['9:00','11:30','13:30'],
+      duracion:'130 min',
+      url:'https://capitanspoiler.files.wordpress.com/2015/02/10869325_591589580977275_2778898650041679518_o.jpg'},
     {
-      codigo: 3,
-      nombre: 'Sin Tiempo Para Morir',
-      idioma: 'ESP',
-      clasificacion: 'B',
-      horarios: ['11:00', '13:50', '19:40'],
-      duracion: '164 min',
-      url: 'https://static.cinepolis.com/img/peliculas/36792/1/1/36792.jpg',
-    },
+      codigo:3,
+      nombre:"Avengers: Infinity War", 
+      idioma:'SUB', 
+      clasificacion:'B',
+      horarios:['11:00','13:50','19:40'],
+      duracion:'148 min',
+      url:'https://m.media-amazon.com/images/I/81OmkfFqvsL._AC_SY741_.jpg'},
     {
-      codigo: 4,
-      nombre: 'Venom: Carnage Liberado',
-      idioma: 'ESP',
-      clasificacion: 'B',
-      horarios: ['10:30', '14:20', '18:30'],
-      duracion: '98 min',
-      url: 'https://static.cinepolis.com/img/peliculas/36934/1/1/36934.jpg',
-    },
+      codigo:4,
+      nombre:"Avengers: Endgame", 
+      idioma:'SUB', 
+      clasificacion:'B',
+      horarios:['10:30','14:20','18:30'],
+      duracion:'160 min',
+      url:'https://m.media-amazon.com/images/I/81ai6zx6eXL._AC_SL1304_.jpg'},
   ]);
 
   const agregar = (_selection, _showtime) => {
@@ -114,7 +111,7 @@ const CineProvider = (props) => {
   };
 
   const comprar = (_cantidad) => {
-    if (_cantidad >= 1 && _cantidad < 11) {
+    if (_cantidad >= 1 && _cantidad) {
       if (Platform.OS === 'android') {
         ToastAndroid.show('compra exitosa, Disfruta la pelicula', ToastAndroid.SHORT);
       } else {
